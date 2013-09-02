@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Responsive arrange
+   ========================================================================== */
+
+/**
+ * Arrange with responsive capability
+ *
+ * See original arrange for more about the component itself.
+ */
+
+/* Variables
+   ========================================================================== */
+
+/**
+ * Bits.sass components namespace
+ */
+
+$bits-components-ns: 'bits-' !default;
+
+/**
+ * Arrange component
+ *
+ * 1. List of generated gutters.
+ */
+
+$bits-arrange-gutter-sizes: /* 1 */ (
+  (small 5px)
+  (medium 10px)
+  (large 20px)
+) !default;
+
+/* Main mixin
+   ========================================================================== */
+
+/**
+ * Mixin encapsulating a version of arrange component at a certain breakpoint
+ */
+
+/**
+ * 1. Eg. 'bits-v4-'.
+ */
+
+@mixin bits-arrange-responsive($breakpoint) {
+  $prefix: unquote("#{$bits-components-ns}#{$breakpoint}-"); /* 1 */
+
+  .#{$prefix}Arrange {
+    display: table !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+
+    table-layout: auto !important;
+  }
+
+  .#{$prefix}Arrange-sizeFill,
+  .#{$prefix}Arrange-sizeFit {
+    display: table-cell !important;
+    padding: 0 !important;
+    vertical-align: top !important;
+  }
+
+  .#{$prefix}Arrange-sizeFill {
+    width: 100% !important;
+  }
+
+  .#{$prefix}Arrange-sizeFill img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .#{$prefix}Arrange-sizeFit img {
+    max-width: none !important;
+    width: auto !important;
+  }
+
+  .#{$prefix}Arrange--middle {
+    > {
+      .#{$bits-components-ns}Arrange-sizeFill,
+      .#{$bits-components-ns}Arrange-sizeFit,
+      .#{$prefix}Arrange-sizeFill,
+      .#{$prefix}Arrange-sizeFit {
+        vertical-align: middle !important;
+      }
+    }
+  }
+
+  .#{$prefix}Arrange--bottom {
+    > {
+      .#{$bits-components-ns}Arrange-sizeFill,
+      .#{$bits-components-ns}Arrange-sizeFit,
+      .#{$prefix}Arrange-sizeFill,
+      .#{$prefix}Arrange-sizeFit {
+        vertical-align: bottom !important;
+      }
+    }
+  }
+
+  .#{$prefix}Arrange--equal {
+    table-layout: fixed !important;
+  }
+
+  .#{$prefix}Arrange--equal {
+    > {
+      .#{$bits-components-ns}Arrange-sizeFill,
+      .#{$bits-components-ns}Arrange-sizeFit,
+      .#{$prefix}Arrange-sizeFill,
+      .#{$prefix}Arrange-sizeFit {
+        width: auto !important;
+      }
+    }
+  }
+
+  .#{$prefix}Arrange--gutter {
+    > {
+      .#{$bits-components-ns}Arrange-sizeFill,
+      .#{$bits-components-ns}Arrange-sizeFit,
+      .#{$prefix}Arrange-sizeFill,
+      .#{$prefix}Arrange-sizeFit {
+        &:first-child {
+          padding-left: 0 !important;
+        }
+      }
+    }
+  }
+
+  @each $size in $bits-arrange-gutter-sizes {
+    $sizeName: nth($size, 1);
+    $sizeVal: nth($size, 2);
+
+    .#{$prefix}Arrange--gutter--#{$sizeName} {
+      > {
+        .#{$bits-components-ns}Arrange-sizeFill,
+        .#{$bits-components-ns}Arrange-sizeFit,
+        .#{$prefix}Arrange-sizeFill,
+        .#{$prefix}Arrange-sizeFit {
+          padding-left: $sizeVal !important;
+        }
+      }
+    }
+  }
+}

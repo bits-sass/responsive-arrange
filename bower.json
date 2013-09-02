@@ -1,0 +1,6 @@
+{
+  "name": "bits-sass-responsive-arrange",
+  "version": "0.1.0",
+  "author": "Lukáš Mladý",
+  "main": "_responsive-arrange.scss"
+}
