@@ -23,7 +23,7 @@ $bits-components-ns: 'bits-' !default;
  * 1. List of generated gutters.
  */
 
-$bits-arrange-gutter-sizes: /* 1 */ (
+$bits-responsive-arrange-gutter-sizes: /* 1 */ (
   (small 5px)
   (medium 10px)
   (large 20px)
@@ -123,7 +123,7 @@ $bits-arrange-gutter-sizes: /* 1 */ (
     }
   }
 
-  @each $size in $bits-arrange-gutter-sizes {
+  @each $size in $bits-responsive-arrange-gutter-sizes {
     $sizeName: nth($size, 1);
     $sizeVal: nth($size, 2);
 

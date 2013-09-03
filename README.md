@@ -16,7 +16,7 @@ Read more about [Bits.sass toolkit](https://github.com/bits-sass/bits.sass).
 ## Available SASS variables
 
 * `bits-components-ns` - components namespace, defaults to 'bits-'
-* `bits-arrange-gutter-sizes` - list of generated gutters
+* `bits-responsive-arrange-gutter-sizes` - list of generated gutters
 
 ## Available classes
 
